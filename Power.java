@@ -2,16 +2,15 @@
 public class Power {
 	
 	public int calculatePower(int a,int n) {
-	    int res = 1;
-//	    a = a % p;
+	    int result = 1;
 	    while (n > 0){
 	        if ((n & 1) == 1) {
-	            res = (res * a) ;
+	            result = (result * a) ;
 	        }
 	        n = n >> 1;
 	        a = (a * a) ;
 	    }
-	    return res;
+	    return result;
 	}
 
 	public static void main(String[] args) {
