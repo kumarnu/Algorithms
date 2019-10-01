@@ -1,22 +1,20 @@
 
 public class Power {
-	
-	public int calculatePower(int a,int n) {
-	    int result = 1;
+	public int calculatePower(int a,int n, int p) {
+	    int res = 1;
+	    a = a % p;
 	    while (n > 0){
-	        if ((n & 1) == 1) {  //& is bit-wise operator
-	            result = (result * a) ;
+	        if ((n & 1) == 1) {
+	            res = (res * a) % p ;
 	        }
-	        n = n >> 1;  // right shift
-	        a = (a * a) ;
+	        n = n >> 1;
+	        a = (a * a) % p;
 	    }
-	    return result;
+	    return res;
 	}
-
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Power obj = new Power();
-		int result = obj.calculatePower(2, 5);
+		int result = obj.calculatePower(2, 3, 3);
 		System.out.println(result);
 	}
 
