@@ -4,10 +4,10 @@ public class Power {
 	public int calculatePower(int a,int n) {
 	    int result = 1;
 	    while (n > 0){
-	        if ((n & 1) == 1) {
+	        if ((n & 1) == 1) {  //& is bit-wise operator
 	            result = (result * a) ;
 	        }
-	        n = n >> 1;
+	        n = n >> 1;  // right shift
 	        a = (a * a) ;
 	    }
 	    return result;
