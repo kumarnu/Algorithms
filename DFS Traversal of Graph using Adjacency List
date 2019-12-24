@@ -1,0 +1,59 @@
+import java.util.LinkedList;
+import java.util.Stack;
+
+public class GraphDFSTraverse {
+	LinkedList<Integer>[] adjList;
+	public GraphDFSTraverse(int nodes) {
+		adjList = new LinkedList[nodes];
+		for(int i = 0; i<nodes; i++) {
+			adjList[i] = new LinkedList<Integer>();
+		}
+	}
+	public void createEdge(int frstNode, int secNode) {
+		this.adjList[frstNode].add(secNode);
+		this.adjList[secNode].add(frstNode);
+	}
+	public void dfsTraverse(int strtNode) {
+		Stack<Integer> stack = new Stack<Integer>();
+		boolean[] visited = new boolean[adjList.length];
+		stack.push(strtNode);
+		while(!stack.isEmpty()) 
+		{
+			int result = stack.pop();
+			if(!visited[result]) 
+			{
+				System.out.print(result);
+				visited[result] = true;
+			
+				for(int value : adjList[result]) 
+				{
+					if(!visited[value]) {
+					stack.push(value);
+				}
+			}
+		  }
+		}	
+	}
+	public void display() {
+		for(int i = 0 ; i < adjList.length; i++) 
+		{
+			System.out.print(i+": ");
+			for(int val : adjList[i]) {
+				System.out.print(val + " ");
+			}
+			System.out.println();
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		GraphDFSTraverse graph = new GraphDFSTraverse(5);
+		graph.createEdge(0, 4);
+		graph.createEdge(0, 2);
+		graph.createEdge(2, 3);
+		graph.createEdge(1, 3);
+		graph.createEdge(3, 4);
+		graph.display();
+		graph.dfsTraverse(0);
+	}
+}
